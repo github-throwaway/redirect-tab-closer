@@ -15,15 +15,16 @@
   "content_scripts": [
     {
       "matches": [
-        "https://zoom.us/postattendee",
-        "https://zoom.us/j/*",
-        "https://*.zoom.us/j/*",
-        "https://zoom.us/s/*",
-        "https://*.zoom.us/s/*",
-        "https://bluejeans.com/*",
-        "https://*.slack.com/archives/*",
-        "https://*.webex.com/webappng/sites/*/meeting/info/*",
-        "https://*.webex.com/wbxmjs/joinservice/*"
+        "*://zoom.us/postattendee",
+        "*://zoom.us/j/*",
+        "*://*.zoom.us/j/*",
+        "*://zoom.us/s/*",
+        "*://*.zoom.us/s/*",
+        "*://bluejeans.com/*",
+        "*://*.slack.com/archives/*",
+        "*://*.webex.com/webappng/sites/*/meeting/info/*",
+        "*://*.webex.com/wbxmjs/joinservice/*",
+        "*://teams.microsoft.com/dl/launcher/launcher.html*"
       ],
       "js": [
         "content.js"
