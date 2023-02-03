@@ -1,10 +1,6 @@
 # Redirect Tab Closer
 
-A Chrome extension that automatically closes the launched window for various redirect browser tabs opened by apps like Zoom, WebEx, Bluejeans and Slack.
-
-## Install from Chrome Web Store
-
-Go to the [Chrome Web Store](https://chrome.google.com/webstore/detail/redirect-tab-closer/fdffoepgfafohjnlmdeaekigejifenpd) and click `Add to Chrome`
+A Chrome extension that automatically closes the launched window for various redirect browser tabs opened by apps like Zoom, WebEx, Bluejeans, Slack and Microsoft Teams.
 
 ## How to install from source
 
@@ -21,4 +17,4 @@ Go to the [Chrome Web Store](https://chrome.google.com/webstore/detail/redirect-
 
 ---
 
-Based on the [bluejeans-zoom-closer](https://github.com/edgar/bluejeans-zoom-closer) extension, which was in turn based on [zoom-close](https://github.com/seanstar12/zoom-close) extension.
+Based on the [redirect-tab-closer](https://github.com/github-throwaway/redirect-tab-closer) extension, which is based on the [bluejeans-zoom-closer](https://github.com/edgar/bluejeans-zoom-closer) extension, which was in turn based on the[zoom-close](https://github.com/seanstar12/zoom-close) extension.
