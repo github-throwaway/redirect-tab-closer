@@ -5,7 +5,7 @@ A Chrome extension that automatically closes the launched window for various red
 ## How to install from source
 
 * Turn on developer mode first if you haven't (Check instruction below if you don't know how to)
-* Download the latest version from https://github.com/ethirolle/redirect-tab-closer/releases, and unzip it
+* Download the latest version from this repository and unzip it
 * Open Chrome Extension Manager: `chrome://extensions/`
 * Click `Load unpacked`, and select the unzipped folder
 
