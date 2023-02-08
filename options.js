@@ -2,15 +2,15 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log("DOM Content loaded");
 
     let defaultUrls = [
-        "*://zoom.us/postattendee",
-        "*://zoom.us/j/*",
+        "*://*zoom.us/postattendee",
+        "*://*zoom.us/j/*",
         "*://*.zoom.us/j/*",
-        "*://zoom.us/s/*",
+        "*://*zoom.us/s/*",
         "*://*.zoom.us/s/*",
         "*://*.slack.com/archives/*",
         "*://*.webex.com/webappng/sites/*/meeting/info/*",
         "*://*.webex.com/wbxmjs/joinservice/*",
-        "*://teams.microsoft.com/dl/launcher/launcher.html*"
+        "*://*teams.microsoft.com/dl/launcher/launcher.html*"
     ];
     let defaultTime = 10;
 
