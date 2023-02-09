@@ -2,6 +2,8 @@
 
 A Chrome extension that automatically closes the launched window for various redirect browser tabs opened by apps like Zoom, WebEx, Slack and Microsoft Teams.
 
+![](./assets/redirect-demo.gif)
+
 ## How to install from source
 
 * Turn on developer mode first if you haven't (Check instruction below if you don't know how to)
