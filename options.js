@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let defaultUrls = [
         "*://*zoom.us/postattendee",
-        "*://*zoom.us/j/*",
         "*://*.zoom.us/j/*",
         "*://*zoom.us/s/*",
         "*://*.zoom.us/s/*",
