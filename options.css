@@ -5,7 +5,7 @@
     line-height: 21px;
     background: #fff;
     border-radius: 2px;
-    padding: 20px 10px;
+    padding: 20px 0px;
 }
 
 .line-numbers {
@@ -32,7 +32,6 @@ textarea {
     min-width: 500px;
     min-height: 500px;
     outline: none;
-    resize: none;
     border: 1px solid #282a3a;
     border-radius: 5px;
 }
@@ -41,4 +40,13 @@ button {
     margin-left: 10px;
     padding: 5px 10px;
     font-size: 16px;
+}
+
+.options {
+    padding: 20px;
+}
+
+.input-group,
+.editor {
+    width: 30%;
 }
