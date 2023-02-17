@@ -31,6 +31,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
+  /**
+   * Updates the line numbers in the textarea based on the number of lines.
+   */
   function updateLineNumbers() {
     const lineNumbers = document.querySelector(".line-numbers");
     const numberOfLines = textarea.value.split("\n").length;
@@ -82,6 +85,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
+  /**
+   * Toggles the display of a feedback block for 5 seconds.
+   * @param {Element} feedback - The feedback block element to be toggled.
+   */
   function toggleFeedbackBlock(feedback) {
     feedback.style.display = "block";
     setTimeout(function () {
