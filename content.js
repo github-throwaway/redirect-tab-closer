@@ -21,26 +21,12 @@ chrome.storage.sync.get(["time", "code"], function (result) {
     // Add a timer element to the page
     const timerElement = document.createElement("div");
     timerElement.id = "timer";
-    timerElement.style.justifyContent = "center";
-    timerElement.style.alignItems = "center";
-    timerElement.style.position = "flex";
-    timerElement.style.display = "flex";
-    timerElement.style.top = "0";
-    timerElement.style.left = "0";
-    timerElement.style.right = "0";
-    timerElement.style.background = "rgba(242, 242, 242, 0.5)";
-
-    timerElement.style.height = "50px";
-    timerElement.style.zIndex = "9999";
-
-    timerElement.innerHTML = `<p style="margin: 0; padding: 0 10px; font-size: 20px;">Closing in: <span id="countdown" style="font-weight: bold;">${time}</span> seconds</p>`;
+    timerElement.innerHTML = `<p class="countdown-title">Closing in: <span id="countdown" class="seconds">${time}</span> seconds</p>`;
     document.body.insertBefore(timerElement, document.body.firstChild);
 
     // Add two buttons to the timer element: "Close Now" and "Cancel"
     const closeButton = document.createElement("button");
-    closeButton.style.marginLeft = "10px";
-    closeButton.style.padding = "5px 10px";
-    closeButton.style.fontSize = "16px";
+    closeButton.id = "closeBtn";
     closeButton.innerHTML = "Close Now";
     closeButton.addEventListener("click", function () {
       chrome.runtime.sendMessage({}, function () {});
@@ -48,9 +34,7 @@ chrome.storage.sync.get(["time", "code"], function (result) {
     timerElement.appendChild(closeButton);
 
     const cancelButton = document.createElement("button");
-    cancelButton.style.marginLeft = "10px";
-    cancelButton.style.padding = "5px 10px";
-    cancelButton.style.fontSize = "16px";
+    cancelButton.id = "cancelBtn";
     cancelButton.innerHTML = "Cancel";
     cancelButton.addEventListener("click", function () {
       // Cancel the timer

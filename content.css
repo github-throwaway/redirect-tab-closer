@@ -1,0 +1,34 @@
+.timer {
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(242, 242, 242, 0.5);
+  height: 50px;
+  z-index: 9999;
+}
+
+.closeBtn {
+  margin-left: 10px;
+  padding: 5px 10px;
+  font-size: 16px;
+}
+
+.cancelBtn {
+  margin-left: 10px;
+  padding: 5px 10px;
+  font-size: 16px;
+}
+
+.countdown-title {
+  margin: 0;
+  padding: 0 10px;
+  font-size: 20px;
+}
+
+.seconds {
+  font-weight: bold;
+}
