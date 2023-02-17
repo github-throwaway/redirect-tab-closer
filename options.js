@@ -9,7 +9,6 @@ const defaultUrls = [
   "*://*teams.microsoft.com/dl/launcher/launcher.html*",
 ];
 const defaultTime = 10;
-export { defaultUrls, defaultTime };
 
 document.addEventListener("DOMContentLoaded", function () {
   console.log("DOM Content loaded");
