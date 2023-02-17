@@ -16,19 +16,17 @@ document.addEventListener("DOMContentLoaded", function () {
   const defaultTime = 10;
 
   // Set defaults
-  chrome.storage.sync.set({ code: defaultUrls.join("\n") });
-  chrome.storage.sync.set({ time: defaultTime });
+  chrome.storage.sync.get(["code", "time"], function (data) {
+    originalTime = data.time || defaultTime;
+    originalCode = data.code || defaultUrls.join("\n");
 
-  // Show the defaults
-  chrome.storage.sync.get(["time", "code"], function (data) {
-    originalTime = data.time;
-    originalCode = data.code;
-    timer.value = data.time;
-
-    if (originalCode) {
-      document.getElementById("textarea").value = originalCode;
-      updateLineNumbers();
-    }
+    chrome.storage.sync.set(
+      { code: originalCode, time: originalTime },
+      function () {
+        timer.value = originalTime;
+        document.getElementById("textarea").value = originalCode;
+        updateLineNumbers();
+        }
   });
 
   /**
