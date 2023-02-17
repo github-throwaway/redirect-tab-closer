@@ -26,7 +26,12 @@ document.addEventListener("DOMContentLoaded", function () {
         timer.value = originalTime;
         document.getElementById("textarea").value = originalCode;
         updateLineNumbers();
+
+        if (originalTime !== defaultTime) {
+          resetBtn.removeAttribute("disabled");
         }
+      }
+    );
   });
 
   /**
