@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     console.log("DOM Content loaded");
+    let originalTime,originalCode;
 
     let defaultUrls = [
         "*://*zoom.us/postattendee",
@@ -19,8 +20,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Show the defaults
     chrome.storage.sync.get(["time", "code"], function (data) {
-        let originalTime = data.time;
-        let originalCode = data.code;
+        originalTime = data.time;
+        originalCode = data.code;
         timer.value = data.time;
 
         if (originalCode) {
