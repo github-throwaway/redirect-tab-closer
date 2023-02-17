@@ -1,7 +1,8 @@
+import { defaultUrls, defaultTime } from "./options.js";
 chrome.storage.sync.get(["time", "code"], function (result) {
   console.log("Data retrieved in content script: ", result);
-  const code = result.code || "";
-  const time = result.time || 3;
+  const code = result.code || defaultUrls.join("\n");
+  const time = result.time || defaultTime;
 
   console.log("Saved time:", time);
   console.log("Saved code:", code);

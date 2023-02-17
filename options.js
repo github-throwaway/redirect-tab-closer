@@ -1,19 +1,33 @@
+const defaultUrls = [
+  "*://*zoom.us/postattendee",
+  "*://*.zoom.us/j/*",
+  "*://*zoom.us/s/*",
+  "*://*.zoom.us/s/*",
+  "*://*.slack.com/archives/*",
+  "*://*.webex.com/webappng/sites/*/meeting/info/*",
+  "*://*.webex.com/wbxmjs/joinservice/*",
+  "*://*teams.microsoft.com/dl/launcher/launcher.html*",
+];
+const defaultTime = 10;
+export { defaultUrls, defaultTime };
+
 document.addEventListener("DOMContentLoaded", function () {
   console.log("DOM Content loaded");
   let originalTime;
   let originalCode;
 
-  const defaultUrls = [
-    "*://*zoom.us/postattendee",
-    "*://*.zoom.us/j/*",
-    "*://*zoom.us/s/*",
-    "*://*.zoom.us/s/*",
-    "*://*.slack.com/archives/*",
-    "*://*.webex.com/webappng/sites/*/meeting/info/*",
-    "*://*.webex.com/wbxmjs/joinservice/*",
-    "*://*teams.microsoft.com/dl/launcher/launcher.html*",
-  ];
-  const defaultTime = 10;
+  const saveBtn = document.getElementById("save");
+  const saveCodeBtn = document.getElementById("save-code");
+  const resetBtn = document.getElementById("reset");
+  const resetCodeBtn = document.getElementById("reset-code");
+
+  const timer = document.getElementById("time");
+  const textarea = document.querySelector("#textarea");
+
+  saveBtn.setAttribute("disabled", "true");
+  saveCodeBtn.setAttribute("disabled", "true");
+  resetBtn.setAttribute("disabled", "true");
+  resetCodeBtn.setAttribute("disabled", "true");
 
   // Set defaults
   chrome.storage.sync.get(["code", "time"], function (data) {
@@ -24,11 +38,15 @@ document.addEventListener("DOMContentLoaded", function () {
       { code: originalCode, time: originalTime },
       function () {
         timer.value = originalTime;
-        document.getElementById("textarea").value = originalCode;
+        textarea.value = originalCode;
         updateLineNumbers();
 
         if (originalTime !== defaultTime) {
           resetBtn.removeAttribute("disabled");
+        }
+        if (originalCode !== defaultUrls.join("\n")) {
+          resetCodeBtn.removeAttribute("disabled");
+          updateLineNumbers();
         }
       }
     );
@@ -44,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   console.log("Attach event listeners");
-  const textarea = document.querySelector("#textarea");
+
   textarea.addEventListener("keyup", (event) => {
     updateLineNumbers();
   });
@@ -62,15 +80,6 @@ document.addEventListener("DOMContentLoaded", function () {
       event.preventDefault();
     }
   });
-
-  const saveBtn = document.getElementById("save");
-  const saveCodeBtn = document.getElementById("save-code");
-  const resetBtn = document.getElementById("reset");
-  const timer = document.getElementById("time");
-
-  saveBtn.setAttribute("disabled", "true");
-  saveCodeBtn.setAttribute("disabled", "true");
-  resetBtn.setAttribute("disabled", "true");
 
   timer.addEventListener("input", function () {
     if (originalTime !== this.value) {
@@ -103,9 +112,9 @@ document.addEventListener("DOMContentLoaded", function () {
   saveBtn.addEventListener("click", function () {
     const time = timer.value;
     chrome.storage.sync.set({ time: time }, function () {
-      // Show a feedback to indicate successful save
       saveBtn.setAttribute("disabled", "true");
       resetBtn.removeAttribute("disabled");
+      // Show a feedback to indicate successful save
       toggleFeedbackBlock(document.getElementById("feedback-success"));
     });
   });
@@ -114,6 +123,8 @@ document.addEventListener("DOMContentLoaded", function () {
   saveCodeBtn.addEventListener("click", function () {
     const code = document.getElementById("textarea").value;
     chrome.storage.sync.set({ code: code }, function () {
+      saveCodeBtn.setAttribute("disabled", "true");
+      resetCodeBtn.removeAttribute("disabled");
       toggleFeedbackBlock(document.getElementById("feedback-success"));
     });
   });
@@ -126,6 +137,18 @@ document.addEventListener("DOMContentLoaded", function () {
       timer.value = defaultTime;
       resetBtn.setAttribute("disabled", "true");
       toggleFeedbackBlock(document.getElementById("feedback-reset"));
+    });
+  });
+
+  // Reset code value to default on reset button click
+  resetCodeBtn.addEventListener("click", function () {
+    chrome.storage.sync.set({ code: defaultUrls.join("\n") }, function () {
+      // Show a feedback to indicate successful reset
+      // Update the value in the text field
+      textarea.value = defaultUrls.join("\n");
+      resetCodeBtn.setAttribute("disabled", "true");
+      toggleFeedbackBlock(document.getElementById("feedback-reset"));
+      updateLineNumbers();
     });
   });
 });
